@@ -21,6 +21,7 @@ switch (commend) {
         }
     break;
     default:
-        console.log('第一个参数不能为空，你总得告诉我干啥吧！')
+        console.log('不能没有参数啊，你总得告诉我干啥吧！比如：')
+        console.log('cat-cli new test')
     break;
 }
