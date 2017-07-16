@@ -1,0 +1,28 @@
+{
+  "name": "cat-cli",
+  "version": "0.0.1",
+  "description": "a good scaffold",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "cat-cli": "./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liumin1128/cat-cli.git"
+  },
+  "keywords": [
+    "scaffold"
+  ],
+  "preferGlobal": true,
+  "author": "liumin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/liumin1128/cat-cli/issues"
+  },
+  "homepage": "https://github.com/liumin1128/cat-cli#readme",
+  "dependencies": {
+    "fs-extra": "^4.0.0"
+  }
+}
