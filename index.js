@@ -7,12 +7,11 @@ var commend = process.argv[2]
 var dirName = process.argv[3] || './'
 var objDir = process.argv[4] || 'webpack3'
 
-var templates = path.join(__dirname, 'templates')
+var templates = path.join(__dirname, objDir)
 
 if (commend === 'new') {
   console.log('正在生成模板：'+objDir)
-  // fs.copySync(templates, dirName)
-
+  fs.copySync(templates, dirName)
   switch (objDir) {
     case 'webpack3':
       try {
