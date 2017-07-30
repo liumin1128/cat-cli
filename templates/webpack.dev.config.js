@@ -79,8 +79,9 @@ module.exports = () => {
     ],
     devServer: {
       port: 8000,
-      host: 'localhost',
+      host: '0.0.0.0',
       historyApiFallback: true,
+      disableHostCheck: true,
     },
     // performance: {
     //   hints: options.dev ? false : 'warning',

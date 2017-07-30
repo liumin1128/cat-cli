@@ -1,0 +1,34 @@
+{
+  "scripts": {
+    "dev": "next -p 8000",
+    "build": "next build",
+    "start": "NODE_ENV=production node server"
+  },
+  "dependencies": {
+    "babel-eslint": "^7.2.3",
+    "babel-plugin-import": "^1.2.1",
+    "es6-promise": "^4.1.1",
+    "isomorphic-fetch": "^2.2.1",
+    "next": "^3.0.1-beta.17",
+    "next-redux-saga": "^1.0.1",
+    "next-redux-wrapper": "^1.2.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-headroom": "^2.1.6",
+    "react-modal": "^2.2.2",
+    "react-redux": "^5.0.5",
+    "react-waypoint": "^7.0.4",
+    "redux": "^3.7.2",
+    "redux-saga": "^0.15.4",
+    "styled-jsx": "^1.0.8"
+  },
+  "devDependencies": {
+    "express": "^4.15.3",
+    "redux-devtools-extension": "^2.13.2",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.2",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.1.0"
+  }
+}
