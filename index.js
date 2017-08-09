@@ -5,7 +5,7 @@ var path = require('path');
 
 var commend = process.argv[2]
 var dirName = process.argv[3] || './'
-var objDir = process.argv[4] || 'webpack3'
+var objDir = process.argv[4] || 'react'
 
 var templates = path.join(__dirname, objDir)
 
@@ -13,7 +13,7 @@ if (commend === 'new') {
   console.log('正在生成模板：'+objDir)
   fs.copySync(templates, dirName)
   switch (objDir) {
-    case 'webpack3':
+    case 'react':
       try {
           console.log('初始化完成!')
           console.log('安装依赖：       cnpm i')
