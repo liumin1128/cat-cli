@@ -8,6 +8,8 @@ module.exports = {
     vendors: [
       'react',
       'react-dom',
+      // 'preact',
+      // 'preact-compat',
       'react-redux',
       'react-router',
       'react-router-dom',
@@ -15,7 +17,13 @@ module.exports = {
       'redux-saga',
     ],
   },
-
+  // resolve: {
+  //   alias: {
+  //     react: 'preact-compat',
+  //     'react-dom': 'preact-compat',
+  //     'preact-compat': 'preact-compat/dist/preact-compat',
+  //   },
+  // },
   output: {
     filename: '[name].dll.js',
     path: path.resolve(__dirname, 'dll'),

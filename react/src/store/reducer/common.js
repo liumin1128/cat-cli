@@ -1,4 +1,4 @@
-function common(state = { title: 'test' }, action) {
+function common(state = {}, action) {
   switch (action.type) {
     case 'common/save':
       return {

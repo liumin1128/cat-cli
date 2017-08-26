@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const manifest = require('./dll/vendors-manifest.json');
+// const manifest = require('./dll/vendors-manifest.json');
 
 module.exports = () => {
   return {
@@ -36,7 +36,7 @@ module.exports = () => {
           test: /\.css$/,
           use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
-            use: ['css-loader?modules', 'postcss-loader'],
+            use: ['css-loader', 'postcss-loader'],
           }),
         },
         {
@@ -62,28 +62,29 @@ module.exports = () => {
     },
     // devtool: 'eval',
     // devtool: 'cheap-source-map',
-    // resolve: {
-    //   alias: {
-    //     react: 'preact-compat',
-    //     'react-dom': 'preact-compat',
-    //   },
-    // },
+    resolve: {
+      alias: {
+        react: 'preact-compat',
+        'react-dom': 'preact-compat',
+        'preact-compat': 'preact-compat/dist/preact-compat',
+      },
+    },
     plugins: [
       new ExtractTextPlugin('index.css'), // 单独打包css
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': '"production"',
       }),
       new CopyWebpackPlugin([
-        {
-          from: './dll/vendors.dll.js',
-          to: 'dll.js',
-        },
+        // {
+        //   from: './dll/vendors.dll.js',
+        //   to: 'dll.js',
+        // },
         {
           from: './public/**/*',
           to: '[name].[ext]',
         },
       ], {
-        ignore: ['index.html'],
+        ignore: ['index.html', 'index.dev.html'],
         copyUnmodified: true,
         debug: 'debug',
       }),
@@ -99,7 +100,8 @@ module.exports = () => {
       // new webpack.HotModuleReplacementPlugin(), // enable HMR globally
       // new webpack.NoEmitOnErrorsPlugin(), // 遇到错误继续
       // new webpack.NamedModulesPlugin(), // prints more readable module names
-      new webpack.DllReferencePlugin({ context: __dirname, manifest }),
+      // new CopyWebpackPlugin([{ from: './dll/vendors.dll.js', to: 'dll.js' }]),
+      // new webpack.DllReferencePlugin({ context: __dirname, manifest }),
       // new webpack.optimize.ModuleConcatenationPlugin(), // 模块串联，大幅减少包大小257k =》239k
       new webpack.optimize.UglifyJsPlugin({
         beautify: false, // 最紧凑的输出
@@ -107,7 +109,7 @@ module.exports = () => {
         compress: {
           warnings: false, // 在UglifyJs删除没有用到的代码时不输出警告
           // support_ie8: false, // 还可以兼容ie浏览器
-          drop_console: true,  // 删除所有的 `console` 语句
+          drop_console: true, // 删除所有的 `console` 语句
           collapse_vars: true, // 内嵌定义了但是只用到一次的变量
           reduce_vars: true, // 提取出出现多次但是没有定义成变量去引用的静态值
         },

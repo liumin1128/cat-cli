@@ -1,9 +1,10 @@
-import { takeEvery } from 'redux-saga';
+import { all } from 'redux-saga/effects';
+import common from './common.js';
 
-function test() {
-  console.log('9999999999999999');
+function * rootSaga() {
+  yield all([
+    ...common,
+  ]);
 }
 
-export default function* watchEffects() {
-  yield* takeEvery('test', test);
-}
+export default rootSaga;

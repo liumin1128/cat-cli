@@ -17,6 +17,7 @@ module.exports = () => {
     output: {
       path: resolve(__dirname, 'dist'),
       filename: '[name].js',
+      publicPath: '/',
     },
     module: {
       rules: [
@@ -38,11 +39,15 @@ module.exports = () => {
         },
         {
           test: /\.css$/,
-          use: ['style-loader', 'css-loader?modules', 'postcss-loader'],
+          use: ['style-loader', 'css-loader', 'postcss-loader'],
         },
         {
           test: /\.less$/,
-          use: ['style-loader', 'css-loader?modules', 'less-loader', 'postcss-loader'],
+          use: ['style-loader', 'css-loader?modules&localIdentName=[name]__[local]___[hash:base64:5]', 'less-loader', 'postcss-loader'],
+        },
+        {
+          test: /\.scss$/,
+          use: ['style-loader', 'css-loader?modules', 'scss-loader', 'postcss-loader'],
         },
         {
           test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,
@@ -58,20 +63,12 @@ module.exports = () => {
         },
       ],
     },
-    // devtool: 'eval',
-    // devtool: 'cheap-source-map',
-    // resolve: {
-    //   alias: {
-    //     react: 'preact-compat',
-    //     'react-dom': 'preact-compat',
-    //   },
-    // },
     plugins: [
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': '"development"',
       }),
       new CopyWebpackPlugin([{ from: './dll/vendors.dll.js', to: 'dll.js' }]),
-      new HtmlWebpackPlugin({ template: './public/index.html' }),
+      new HtmlWebpackPlugin({ template: './public/index.dev.html' }),
       // new webpack.HotModuleReplacementPlugin(), // enable HMR globally
       new webpack.NoEmitOnErrorsPlugin(), // 遇到错误继续
       new webpack.NamedModulesPlugin(), // prints more readable module names
@@ -82,10 +79,8 @@ module.exports = () => {
       host: '0.0.0.0',
       historyApiFallback: true,
       disableHostCheck: true,
+      contentBase: '/', // 配置服务器目录
+      publicPath: '/', // 同output的publicPath
     },
-    // performance: {
-    //   hints: options.dev ? false : 'warning',
-    // },
-
   };
 };
