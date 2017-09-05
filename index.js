@@ -6,7 +6,7 @@ var path = require('path');
 // var exec = require('child_process').exec;
 
 program
-  .version('0.4.0')
+  .version('0.4.1')
   .option('-i, --info about author', '查看作者信息')
   .option('-l, --list', '列出全部可用脚手架')
   // .option('-t, --type <type>', '设置脚手架类型');
