@@ -9,7 +9,7 @@ program
   .version('0.4.0')
   .option('-i, --info about author', '查看作者信息')
   .option('-l, --list', '列出全部可用脚手架')
-  .option('-t, --type <type>', '设置脚手架类型');
+  // .option('-t, --type <type>', '设置脚手架类型');
 
 program
   .command('new [objDirPath]')
